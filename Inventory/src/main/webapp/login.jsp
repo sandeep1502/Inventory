@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE HTML>
 <html>
@@ -28,18 +31,18 @@
 		<h2 class="inner-tittle page">INVENTORY</h2>
                     <div class="login">
 			<h3 class="inner-tittle t-inner">Sign In</h3>
-			<form method="post" action="/Inventory/validations">
-				<input type="text" name="user" class="text" id="user" value="User Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Name';}" >
-				<input type="password" name="pass" id="password" value="Password"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+			 <form:form id="loginForm" modelAttribute="login" action="loginProcess" method="post">
+				<form:input type="text" name="user" class="text" path="user" value="User Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Name';}"></form:input>
+				<form:input type="password" name="pass" id="password" path="Password"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"></form:input>
 				<div class="submit">
-                                    <input type="submit"  value="Sign In" >
+                                     <form:button id="submit" name="register">SignIn</form:button>
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="new">
                                     <p class="sign">Do not have an account ? <a href="register.html">Sign Up</a></p>
                                         <div class="clearfix"></div>
                                 </div>
-			</form>
+			</form:form>
 		    </div>
             </div>
 	</div>
