@@ -1,15 +1,31 @@
 package com.project;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+
 public class Items {
-	public List<ItemModel> getAllItems() {
+	JdbcTemplate template;
+	public JdbcTemplate getTemplate() {
+		return template;
+	}
+	public void setTemplate(JdbcTemplate template) {
+		this.template = template;
+	}
+	/*public List<ItemModel> getAllItems() {
+		
 	      String SQL = "select * from users";
 	      List <ItemModel> Items = template.query(SQL,new ResultSetExtractor<List<ItemModel>>(){
 	         
 	         public List<ItemModel> extractData(ResultSet rs) throws SQLException, DataAccessException {
 	            
-	            List<ItemModel> ulist = new ArrayList<UserModel>();  
+	            List<ItemModel> ulist = new ArrayList<ItemModel>();  
 	            while(rs.next()){  
-	               UserModel usr = new UserModel();
+	               ItemModel usr = new ItemModel();
 	               usr.setUsername(rs.getString(1));
 	               usr.setPassword(rs.getString(2));
 	               usr.setFirstname(rs.getString(3));
@@ -23,5 +39,5 @@ public class Items {
 	         }    	  
 	      });
 	      return users;
-	   }
+	   }*/
 }

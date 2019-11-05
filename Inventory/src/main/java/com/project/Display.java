@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 public class Display {
-	@RequestMapping(value = "/multiusers", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/multiusers", method = RequestMethod.GET)
 	  public ModelAndView showAllUsers(HttpServletRequest request, HttpServletResponse response) {
 		  
 	    ModelAndView mav = new ModelAndView("multiusers");
 		List<ItemsModel> ulist=rgDAO.getItems();
-		ItemsForm uf=new ItemsForm();
+		ItemForm uf=new ItemForm();
 		uf.setUsersList(ulist);
 		mav.addObject("usersForm", uf);
 		
@@ -26,8 +26,9 @@ public class Display {
 				System.out.printf("%s \t %s \n", u.getFirstname(), u.getLastname());
 			}
 		}
-		*/
+		
 		
 	    return mav;
-	  }
+	  }*/
+	
 }

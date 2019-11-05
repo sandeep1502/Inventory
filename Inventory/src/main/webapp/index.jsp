@@ -1,4 +1,6 @@
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -34,7 +36,7 @@
 															
 															<div style="font-size: 3px"><h3>Inventory Management</h3></div>
 															<div class="error-btn">
-															<a class="read fourth" href="login.html">Enter Here</a>
+															<a class="read fourth" href="login">Enter Here</a>
 															</div>
                                                                                                                      
 														</div>
