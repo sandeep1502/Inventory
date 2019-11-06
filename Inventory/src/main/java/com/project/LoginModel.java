@@ -1,6 +1,6 @@
 package com.project;
- 
-public class loginBean
+import javax.validation.constraints.Size;  
+public class LoginModel
 {
       private String user;
       private String Password;
@@ -18,5 +18,8 @@ public class loginBean
 	public void setPassword(String password) {
 		Password = password;
 	}
-    
+     
+      
+      
+      
 }

@@ -27,7 +27,7 @@
     </bean>
     
 
-    <bean id="loginDao" class="com.project.loginDaoimpl" >
+    <bean id="loginDao" class="com.project.RegisterDaoImpl" >
     	<property name="template" ref="jdbcTemplate" />
     </bean>
 

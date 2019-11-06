@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE HTML>
 <html>
@@ -28,29 +31,29 @@
 												<!--/login-top-->
 												
 													<div class="error-top">
-                                                                                                            <h2 class="inner-tittle page">SIGN UP</h2><br>
+                                                     <h2 class="inner-tittle page">SIGN UP</h2><br>
 													    <div class="login">
 														
-																<form>
+															 <form:form id="loginForm" modelAttribute="user" action="RegistrationProcess" method="post">
                                                                                                                                                
-																		<input type="text" class="input-field" placeholder="User Name" id="name" required>
+																		<form:input path="username" name="username" id="username"  class="input-field" />
 																		
                                                                                                                                                 <div class="form-group">
 																			<label for="focusedinput" class="col-sm-5 control-label">USER TYPE</label>
 																			<div class="col-sm-6" style="margin-top: 10px">
-                                                                                                                                                            <select id="type">
-                                                                                                                                                                <option value="ADMIN">ADMIN</option>
-                                                                                                                                                                <option value="VENDOR">VENDOR</option>
-                                                                                                                                                            </select>
+                                                                                                                                                            <form:select id="type" path="type">
+                                                                                                                                                           <form:option value="ADMIN">ADMIN</form:option>
+                                                                                                                                                           <form:option value="VENDOR">VENDOR</form:option>
+                                                                                                                                                            </form:select>
                                                                                                                                                         </div>
                                                                                                                                                 </div>
                                                                                                                                                 
-                                                                                                                                                <input type="text" class="input-field" placeholder="Email Id" id="mail" required>
-																		<input type="password" name="password" placeholder="Password" id="password1"  required>
-                                                                                                                                                <input type="password" name="password" placeholder="Confirm Password" id="password2"  required>
+                                                                        <form:input type="text" class="input-field" placeholder="Email Id" id="mail" path="email"></form:input>
+																		<form:input type="password" name="password" placeholder="Password" id="password1" path="password"></form:input>
+                                                                         <form:input type="password" name="password" placeholder="Confirm Password" id="password2" path="cpassword" ></form:input>
 																		<div class="sign-up">
 																					
-																					<input type="submit"  value="Register">
+																					  <form:button id="submit" name="submit">Submit</form:button>
 																			
 																		</div>
 																		<div class="clearfix"></div>
@@ -60,7 +63,7 @@
 																			<p class="sign"></p>
 																			<div class="clearfix"></div>
 																		</div>
-																	</form>
+																	</form:form>
 														</div>
 														
 													</div>

@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="new">
-                                    <p class="sign">Do not have an account ? <a href="register.html">Sign Up</a></p>
+                                    <p class="sign">Do not have an account ? <a href="register">Sign Up</a></p>
                                         <div class="clearfix"></div>
                                 </div>
 			</form:form>
