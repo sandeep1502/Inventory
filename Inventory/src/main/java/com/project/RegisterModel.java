@@ -1,13 +1,13 @@
 package com.project;
 
-import org.hibernate.validator.constraints.NotEmpty;
+
 
 public class RegisterModel {
-	@NotEmpty
+	
 	private String username;
-	@NotEmpty
+
 	private String type;
-	@NotEmpty
+	
 	private String email;
 	private String password;
 	private String cpassword;
