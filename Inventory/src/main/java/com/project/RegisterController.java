@@ -27,10 +27,19 @@ public class RegisterController {
 	@RequestMapping(value = "/RegistrationProcess", method = RequestMethod.POST)
 	  public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
 			  @ModelAttribute("user") RegisterModel user) {
+		ModelAndView mav = null;
 		 int status=rgDAO.Registeruser(user);
-
-		  return new ModelAndView("regsuccess", "firstname",user.getUsername());
-
+		 if(status==0)
+		 {
+			 mav = new ModelAndView("register");
+			 mav.addObject("name", user.getUsername());
+		 }
+		 else {
+			 mav = new ModelAndView("login");
+			 
+		 
+		 }
+		 return mav;
 	}
 	
 

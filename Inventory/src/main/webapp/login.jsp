@@ -32,8 +32,8 @@
                     <div class="login">
 			<h3 class="inner-tittle t-inner">Sign In</h3>
 			 <form:form id="loginForm" modelAttribute="login" action="loginProcess" method="post">
-				<form:input type="text" name="user" class="text" path="user" value="User Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Name';}"></form:input>
-				<form:input type="password" name="pass" id="password" path="Password"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"></form:input>
+				<form:input type="text" name="username" class="text" path="username" value="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Name';}"></form:input>
+				<form:input type="password" name="pass" id="password" path="password"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"></form:input>
 				<div class="submit">
                                      <form:button id="submit" name="register">SignIn</form:button>
                                 </div>

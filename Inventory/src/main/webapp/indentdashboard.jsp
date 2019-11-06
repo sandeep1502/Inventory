@@ -4,7 +4,7 @@
     Author     : pennantstaff
 --%>
 
-<%@page import="db.Dbcon"%>
+
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -136,19 +136,7 @@
                          </script> 
 						<div class="outter-wp">
 								<!--custom-widgets-->
-                                       <%  
-                                                    String b,c,d;
-                                                    int x=0,y=0,z=0,w=0;
-                                                    String l,m,n;
-                                                    int a=0;
-                                                    try
-                                                        {
-                                                           Dbcon dc=new Dbcon();
-                                                            Class.forName(dc.getDriver());
-                                                            Connection con=DriverManager.getConnection(dc.getUrl(),dc.getUser(),dc.getPassword());
-                                                            PreparedStatement ps1=con.prepareStatement("select * from INDENTS_TAB where indn_status='yes'");
-                                                            ResultSet rs1=ps1.executeQuery();
-                                                       %>
+                                       
                                                 <div class="outter-wp">
 								
 												<div class="custom-widgets">
@@ -159,17 +147,9 @@
 																<h4>Indent</h4>
 															</div>
 															<div class="stats-right">
-                                        <%
-                                                            while(rs1.next())
-                                                                {
-                                                                    a=a+1;
-                                                                    
-                                        %>
-																<label><%=a %></label>
-                                        <%
-                                                                }
-                                                           rs1.close();
-                                        %>
+                                       
+																<label></label>
+                                        
 															</div>
 															<div class="clearfix"> </div>	
 														</div>
@@ -179,18 +159,9 @@
 																<h4>Indents</h4>
 															</div>
 															<div class="stats-right">
-                                          <% 
-                                               PreparedStatement ps2=con.prepareStatement("select * from INDENTS_TAB where indn_status='no'");
-                                               ResultSet rs2=ps2.executeQuery();
-                                              while(rs2.next())
-                                                                {
-                                                                   y=y+1;
-                                                                }
-                                          %>
-                                                                                                                 <label><%=y %> </label>
-                                         <%
-                                                          rs2.close(); 
-                                        %>
+                                         
+                                                                                                                 <label> </label>
+                                        
 															</div>
 															<div class="clearfix"> </div>	
 														</div>
@@ -342,14 +313,7 @@
 							  <div class="clearfix"></div>		
 							</div>
             
-             <%
-                                                        con.close();   
-                                                         }   
-                                                    catch(Exception ex)
-                                                        {
-                                                             ex.printStackTrace();
-                                                        }
-                                         %>
+           
             
 						
 <!--js -->

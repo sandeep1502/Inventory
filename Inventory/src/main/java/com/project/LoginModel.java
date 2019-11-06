@@ -1,25 +1,21 @@
 package com.project;
 import javax.validation.constraints.Size;  
-public class LoginModel
-{
-      private String user;
-      private String Password;
-      
-      
-	public String getUser() {
-		return user;
-	}
-	public void setUser(String user) {
-		this.user = user;
-	}
-	public String getPassword() {
-		return Password;
-	}
-	public void setPassword(String password) {
-		Password = password;
-	}
-     
-      
-      
-      
+
+
+public class LoginModel {
+	private String username;
+	  private String password;
+	  public String getUsername() {
+		  return username;
+	  }
+	  public void setUsername(String username) {
+		  this.username = username;
+	  }
+	  public String getPassword() {
+		  return password;
+	  }
+	  public void setPassword(String password) {
+		  this.password = password;
+	  }
 }
+

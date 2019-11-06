@@ -16,14 +16,15 @@ public JdbcTemplate getTemplate() {
 
 public int Registeruser(RegisterModel rgb)
 {
-			
-			
+	int st=0;
+	if(rgb.getPassword().equals(rgb.getCpassword()))
+	{	
 	//prepare the insert statement
     String qry = "insert into registration values(?,?,?,?)";
     	
     //execute the DML statement
-    int st=template.update(qry, new Object[] { rgb.getUsername(), rgb.getType(), rgb.getEmail(),rgb.getPassword()});
-    
+    st=template.update(qry, new Object[] { rgb.getUsername(), rgb.getType(), rgb.getEmail(),rgb.getPassword()});
+	}
 	return st;
 
 			}
@@ -33,8 +34,8 @@ public int validateCredentials(LoginModel lm) {
 	String qry = "select pass from registration where username=?";
 	String qry2 = "select usertype from registration where username=?";
 	try {
-	String pwd = (String)template.queryForObject(qry,new Object[]{lm.getUser()}, String.class );
-	String type = (String)template.queryForObject(qry,new Object[]{lm.getUser()}, String.class );
+	String pwd = (String)template.queryForObject(qry,new Object[]{lm.getUsername()}, String.class );
+	String type = (String)template.queryForObject(qry,new Object[]{lm.getUsername()}, String.class );
 	//verify the password
 	if (pwd != null) {
 		if (lm.getPassword().equals(pwd)) {

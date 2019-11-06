@@ -40,14 +40,14 @@ public class LoginController {
 	      
 	      //navigating based on the result
 	      if (ls==0) {   //successful login
-	    	  mav = new ModelAndView("studentdashboard");
-	    	  mav.addObject("firstname", login.getUser());
+	    	  mav = new ModelAndView("Dashboard");
+	    	  
 	      } else if (ls==1) {	//login failure with wrong pwd
+	    	  mav = new ModelAndView("indentdashboard");
+	    	 
+	      } else if (ls==2||ls==3) {		//login failure with wrong user
 	    	  mav = new ModelAndView("login");
-	    	  mav.addObject("message", "Password is wrong!!");
-	      } else if (ls==2) {		//login failure with wrong user
-	    	  mav = new ModelAndView("login");
-	    	  mav.addObject("message", "Username is wrong!!");
+	    	 
 	      }
 	      return mav;
 	  }
