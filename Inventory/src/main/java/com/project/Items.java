@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
 
 public class Items {
 	JdbcTemplate template;
@@ -16,28 +17,29 @@ public class Items {
 	public void setTemplate(JdbcTemplate template) {
 		this.template = template;
 	}
-	/*public List<ItemModel> getAllItems() {
+	public List<ItemModel> getAllItems() {
 		
-	      String SQL = "select * from users";
+	      String SQL = "select * from items where item_id=?";
 	      List <ItemModel> Items = template.query(SQL,new ResultSetExtractor<List<ItemModel>>(){
 	         
 	         public List<ItemModel> extractData(ResultSet rs) throws SQLException, DataAccessException {
 	            
-	            List<ItemModel> ulist = new ArrayList<ItemModel>();  
+	            List<ItemModel> itemlist = new ArrayList<ItemModel>();  
 	            while(rs.next()){  
-	               ItemModel usr = new ItemModel();
-	               usr.setUsername(rs.getString(1));
-	               usr.setPassword(rs.getString(2));
-	               usr.setFirstname(rs.getString(3));
-	               usr.setLastname(rs.getString(4));
-	               usr.setEmail(rs.getString(5));
-	               usr.setQual(rs.getString("qual"));
-	    	       usr.setMobile(rs.getInt(7));
-	               ulist.add(usr);  
+	               ItemModel item = new ItemModel();
+	               item.setItem_id(rs.getInt(1));
+	               item.setItem_Type_Id(rs.getString(2));
+	               item.setItem_Category(rs.getString(3));
+	               item.setItem_Title(rs.getString(4));
+	               item.setItem_Brand_Id(rs.getString(5));
+	               item.setItem_Os_Type(rs.getString(6));
+	               item.setItem_DeviceVersion(rs.getString(7));
+	               itemlist.add(item);  
 	            }  
-	            return ulist;  
+	            return itemlist;  
 	         }    	  
 	      });
-	      return users;
-	   }*/
+	      return Items;
+	   }
+
 }

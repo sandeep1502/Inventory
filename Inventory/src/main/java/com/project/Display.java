@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 public class Display {
+	Items item;
 	/*@RequestMapping(value = "/multiusers", method = RequestMethod.GET)
 	  public ModelAndView showAllUsers(HttpServletRequest request, HttpServletResponse response) {
 		  
@@ -30,5 +31,15 @@ public class Display {
 		
 	    return mav;
 	  }*/
-	
+	@RequestMapping(value = "/dummymaster", method = RequestMethod.GET)
+	  public ModelAndView showAllUsers(HttpServletRequest request, HttpServletResponse response) {
+		  
+	    ModelAndView mav = new ModelAndView("dummymaster");
+	    List<ItemModel> itemlist=item.getAllItems();
+	    ItemForm im=new ItemForm();
+	    im.setItemList(itemlist);
+		mav.addObject("item",im);
+		
+		return mav;
+}
 }

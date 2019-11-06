@@ -1,6 +1,7 @@
      
 
 <%@ page import="java.sql.*" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -10,26 +11,26 @@
 
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         <!-- Bootstrap Core CSS -->
-        <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+        <link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel='stylesheet' type='text/css' />
         <!-- Custom CSS -->
-        <link href="css/style.css" rel='stylesheet' type='text/css' />
+        <link href="<c:url value="/resources/css/style.css"/>" rel='stylesheet' type='text/css' />
         <!-- Graph CSS -->
-        <link href="css/font-awesome.css" rel="stylesheet"> 
+        <link href="<c:url value="/resources/css/font-awesome.css"/>" rel="stylesheet"> 
         <!-- jQuery -->
         <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'>
         <!-- lined-icons -->
-        <link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
+        <link rel="stylesheet" href="<c:url value="/resources/css/icon-font.min.css"/>" type='text/css' />
         <!-- //lined-icons -->
-        <script src="js/jquery-1.10.2.min.js"></script>
-        <script src="js/amcharts.js"></script>	
-        <script src="js/serial.js"></script>	
-        <script src="js/light.js"></script>	
-        <script src="js/radar.js"></script>	
-        <link href="css/barChart.css" rel='stylesheet' type='text/css' />
-        <link href="css/fabochart.css" rel='stylesheet' type='text/css' />
-        <script src="js/css3clock.js"></script>
-        <script src="js/skycons.js"></script>
-        <script src="js/jquery.easydropdown.js"></script>
+        <script src="<c:url value="/resources/js/jquery-1.10.2.min.js"/>"></script>
+        <script src="<c:url value="/resources/js/amcharts.js"/>"></script>	
+        <script src="<c:url value="/resources/js/serial.js"/>"></script>	
+        <script src="<c:url value="/resourcesjs/light.js"/>"></script>	
+        <script src="<c:url value="/resources/js/radar.js"/>"></script>	
+        <link href="<c:url value="/resources/css/barChart.css"/>" rel='stylesheet' type='text/css' />
+        <link href="<c:url value="/resources/css/fabochart.css"/>" rel='stylesheet' type='text/css' />
+        <script src="<c:url value="/resources/js/css3clock.js"/>"></script>
+        <script src="<c:url value="/resources/js/skycons.js"/>"></script>
+        <script src="<c:url value="/resources/js/jquery.easydropdown.js"/>"></script>
     </head> 
     <body>
       
@@ -169,7 +170,7 @@
                                         
                                         <div class="grid-1">
                                             <div class="form-body">
-                                                <form class="form-horizontal" action="dummymaster.jsp">
+                                                <form class="form-horizontal" action="dummymaster">
                                                     <div class="form-group">
                                                         <label for="focusedinput" class="col-sm-5 control-label">Item_Id</label>
                                                         <div class="col-sm-6">
@@ -180,7 +181,7 @@
                                                     <div class="form-group">
                                                         <label for="focusedinput" class="col-sm-5 control-label">Item_Type_Id</label>
                                                         <div class="col-sm-6">
-                                                            <input type="text" class="form-control1" id="Item_Type_Ide" placeholder="Item_Type_Id" value="25">
+                                                            <input type="text" class="form-control1" id="Item_Type_Ide" placeholder="Item_Type_Id" >
                                                         </div>
 
                                                     </div>
@@ -272,77 +273,11 @@
                                 </div>
                            <!-- //pop up-ends -->
                     <script>
-                        function del()
-
-                        {
-                    
-        
-                            var u;
-                            var k="Deleted";
-                            var i = document.getElementById("Item_id_del").value;
-                            var req=new XMLHttpRequest();
-                            req.onreadystatechange = function()
-                                             {
-                                                    if(req.readyState=='4' && req.status=='200')
-                                                        { 
-                                                            
-                                                            u=req.responseText;
-                                                          
-                                                           if(u.localeCompare(k)==0)
-                                                                {
-                                                                   alert("Deleted Successfully");
-                                                                    window.location.href="Item_Master.jsp";
-                                                                }
-                                                             else
-                                                                {
-                                                                   alert("Sorry Try Again"); 
-                                                                   window.location.href="Item_Master.jsp";
-                                                                }
-                                                         }
-                                             }
-                            req.open("GET","/Inventory/DeleteItemMaster?id="+i,true);
-                            req.send(null);
-                           
-                        }
+                      
                         
  </script>
                       <script>
-                              function edit()
-                                        {
-                                              
-                                                var u;
-                                               
-                                                var i = document.getElementById("Item_Ide").value;
-                                                var j = document.getElementById("Item_Type_Ide").value;
-                                                var k = document.getElementById("Item_Categorye").value;
-                                                var l = document.getElementById("Item_Titlee").value;
-                                                var m =document.getElementById("Item_Brand_Ide").value;
-                                                var n = document.getElementById("Item_OS_Typee").value;
-                                                var o =  document.getElementById("Item_Device_Versione").value;
-                                                var p = document.getElementById("Item_Os_Versione").value ;
-                                                var q = document.getElementById("Item_Reldatee").value;
-                                                var r = document.getElementById("Item_Avldatee").value;
-                                                var s = document.getElementById("Item_Reorderlevele").value;
-                                                var t = document.getElementById("Item_Minstocke").value;
-                                                var req=new XMLHttpRequest();
-                                                req.onreadystatechange = function()
-                                                                 {
-                                                                        if(req.readyState=='4' && req.status=='200')
-                                                                            {
-                                                                               
-                                                                                u=req.responseText;
-                                                                                    alert(u);
-                                                                                   
-                                                                         
-                                                                                     window.location.href="Item_Master.jsp";
-                                                                                 
-                                                                                 
-                                                                             }
-                                                                 };
-                                                req.open("GET","/Inventory/EditItemMaster?Item_Id="+i+"&Item_Type_Id="+j+"&Item_Category="+k+"&Item_Title="+l+"&Item_Brand_Id="+m+"&Item_OS_Type="+n+"&Item_Device_Version="+o+"&Item_Os_Version="+p+"&Item_Reldate="+q+"&Item_Avldate="+r+"&Item_Reorderlevel="+s+"&Item_Minstock="+t,true);
-                                                req.send(null);
-
-                        }
+                              
                                                             
                                                         
                                                         </script>
@@ -644,13 +579,13 @@
                          </script> 
         <!--js -->
         <link rel="stylesheet" href="css/vroom.css">
-        <script type="text/javascript" src="js/vroom.js"></script>
-        <script type="text/javascript" src="js/TweenLite.min.js"></script>
-        <script type="text/javascript" src="js/CSSPlugin.min.js"></script>
-        <script src="js/jquery.nicescroll.js"></script>
-        <script src="js/scripts.js"></script>
+        <script type="text/javascript" src="<c:url value="resources/js/vroom.js"/>"></script>
+        <script type="text/javascript" src="<c:url value="resources/js/TweenLite.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value="js/CSSPlugin.min.js"/>"></script>
+        <script src="<c:url value="/resources/js/jquery.nicescroll.js"/>"></script>
+        <script src="<c:url value="/resources/js/scripts.js"/>"></script>
 
         <!-- Bootstrap Core JavaScript -->
-        <script src="js/bootstrap.min.js"></script>
+        <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
     </body>
 </html>

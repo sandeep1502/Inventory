@@ -2,13 +2,16 @@ package com.project;
 
 public class ItemModel {
 	int Item_id;
-	
+
 	String Item_Type_Id;
 	String Item_Category;
 	String Item_Title;
 	String Item_Brand_Id;
 	String Item_Os_Type;
 	String Item_DeviceVersion;
+	
+	
+	
 	public int getItem_id() {
 		return Item_id;
 	}

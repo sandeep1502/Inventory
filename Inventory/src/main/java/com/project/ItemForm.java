@@ -4,15 +4,17 @@ import java.util.List;
 
 public class ItemForm {
 
-		private List<ItemModel> usersList;
+		private List<ItemModel> ItemList;
 
-		public List<ItemModel> getUsersList() {
-			return usersList;
+		public List<ItemModel> getItemList() {
+			return ItemList;
 		}
 
-		public void setUsersList(List<ItemModel> usersList) {
-			this.usersList = usersList;
+		public void setItemList(List<ItemModel> itemList) {
+			ItemList = itemList;
 		}
+
+		
 
 		
 }
