@@ -10,7 +10,7 @@ public class RegisterModel {
 	private String type;
 	@NotEmpty
 	private String email;
-	@NotEmpty
+	@NotEmpty(message = "{Password should be Mandatory}")
 	private String password;
 	private String cpassword;
 	public String getCpassword() {
