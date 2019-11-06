@@ -31,7 +31,7 @@ public class Display {
 		
 	    return mav;
 	  }*/
-	@RequestMapping(value = "/dummymaster", method = RequestMethod.GET)
+	@RequestMapping(value= "/dummymaster", method = RequestMethod.GET)
 	  public ModelAndView showAllUsers(HttpServletRequest request, HttpServletResponse response) {
 		  
 	    ModelAndView mav = new ModelAndView("dummymaster");
