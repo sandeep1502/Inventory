@@ -1,8 +1,11 @@
 package com.project;
-import javax.validation.constraints.Size;  
+import javax.validation.constraints.Size; 
+import javax.validation.constraints.NotNull;
+
 public class LoginModel
-{
+{	@NotNull(message = "{user Name should be Mandatory}")
       private String user;
+	@NotNull(message = "{Password should be Mandatory}")
       private String Password;
       
       

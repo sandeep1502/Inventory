@@ -16,14 +16,15 @@ public JdbcTemplate getTemplate() {
 
 public int Registeruser(RegisterModel rgb)
 {
-			
-			
+	int st=0;		
+	if(rgb.getPassword().equals(rgb.getCpassword()))
+	{
 	//prepare the insert statement
     String qry = "insert into registration values(?,?,?,?)";
     	
     //execute the DML statement
-    int st=template.update(qry, new Object[] { rgb.getUsername(), rgb.getType(), rgb.getEmail(),rgb.getPassword()});
-    
+     st=template.update(qry, new Object[] { rgb.getUsername(), rgb.getType(), rgb.getEmail(),rgb.getPassword()});
+	}
 	return st;
 
 			}

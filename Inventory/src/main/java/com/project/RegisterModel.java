@@ -2,6 +2,7 @@ package com.project;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+
 public class RegisterModel {
 	@NotEmpty
 	private String username;
@@ -9,6 +10,7 @@ public class RegisterModel {
 	private String type;
 	@NotEmpty
 	private String email;
+	@NotEmpty
 	private String password;
 	private String cpassword;
 	public String getCpassword() {
