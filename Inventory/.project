@@ -17,6 +17,14 @@
 		</buildCommand>
 		<buildCommand>
 			<name>org.eclipse.wst.validation.validationbuilder</name>
+<<<<<<< HEAD
+=======
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.m2e.core.maven2Builder</name>
+>>>>>>> branch 'master' of https://github.com/sandeep1502/Inventory.git
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -27,11 +35,14 @@
 		</buildCommand>
 		<buildCommand>
 			<name>org.springframework.ide.eclipse.boot.validation.springbootbuilder</name>
+<<<<<<< HEAD
 			<arguments>
 			</arguments>
 		</buildCommand>
 		<buildCommand>
 			<name>org.eclipse.m2e.core.maven2Builder</name>
+=======
+>>>>>>> branch 'master' of https://github.com/sandeep1502/Inventory.git
 			<arguments>
 			</arguments>
 		</buildCommand>

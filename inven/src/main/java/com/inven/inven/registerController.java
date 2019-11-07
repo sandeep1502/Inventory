@@ -23,14 +23,6 @@ public class registerController {
 
 		  return new ModelAndView("regsuccess", "firstname", rgb.getUsername());
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	}
 	
 	

@@ -1,6 +1,7 @@
 package com.project;
 
 
+
 public class RegisterModel {
 	
 	private String username;
@@ -8,7 +9,9 @@ public class RegisterModel {
 	private String type;
 	
 	private String email;
+
 	
+
 	private String password;
 	private String cpassword;
 	public String getCpassword() {

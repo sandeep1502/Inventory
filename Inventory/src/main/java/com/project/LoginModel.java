@@ -1,4 +1,5 @@
 package com.project;
+
 import javax.validation.constraints.Size;  
 
 
@@ -18,4 +19,3 @@ public class LoginModel {
 		  this.password = password;
 	  }
 }
-
