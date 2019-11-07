@@ -39,7 +39,7 @@ public int validateCredentials(LoginModel lm) {
 	
 	//get the password for the given user
 	String qry = "select pass from registration where username=?";
-	System.out.print(lm.getUsername());
+	
 	String qry2 = "select usertype from registration where username=?";
 	try {
 	String pwd = (String)template.queryForObject(qry,new Object[]{lm.getUsername()}, String.class );
