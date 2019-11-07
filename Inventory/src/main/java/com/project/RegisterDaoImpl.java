@@ -32,14 +32,16 @@ public int validateCredentials(LoginModel lm) {
 	
 	//get the password for the given user
 	String qry = "select pass from registration where username=?";
+	System.out.print(lm.getUsername());
 	String qry2 = "select usertype from registration where username=?";
 	try {
 	String pwd = (String)template.queryForObject(qry,new Object[]{lm.getUsername()}, String.class );
-	String type = (String)template.queryForObject(qry,new Object[]{lm.getUsername()}, String.class );
+	System.out.print(pwd);
+	String type = (String)template.queryForObject(qry2,new Object[]{lm.getUsername()}, String.class );
 	//verify the password
 	if (pwd != null) {
 		if (lm.getPassword().equals(pwd)) {
-			if("ADMIN".equals(type))
+			if(type.equals("ADMIN"))
 			{
 			return 0;	
 			}

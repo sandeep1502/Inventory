@@ -30,5 +30,7 @@
     <bean id="loginDao" class="com.project.RegisterDaoImpl" >
     	<property name="template" ref="jdbcTemplate" />
     </bean>
-
+	<bean id="IndentDao" class="com.project.IndentDaoImpl" >
+    	<property name="template" ref="jdbcTemplate" />
+    </bean>
 </beans>

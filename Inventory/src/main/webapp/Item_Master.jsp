@@ -138,7 +138,7 @@
                                                     </p>
                                                     <p class="four">
                                                        
-                                                        <a class="a_demo_four" data-toggle="modal" data-target="Update" >Update</a>
+                                                        <a class="a_demo_four" data-toggle="modal" data-target="#Update  " >Update</a>
                                                     </p>
                                                     <div class="clearfix"> </div>
                                                 </form>

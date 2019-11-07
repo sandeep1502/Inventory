@@ -1,5 +1,6 @@
-     <%@page import="db.Dbcon"%>
+
 <%@ page import="java.sql.*" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -31,48 +32,9 @@
 <script src="js/jquery.easydropdown.js"></script>
 </head> 
 <body>
-    <%
-           
+    
             
-            HttpSession hs=null;
-            String username=null;
-            String usertype=null;
-            String mail=null;
-            RequestDispatcher rd=null;
-            try{
-              
-            //validating login status
-           hs=request.getSession(true);
-           username=(String)hs.getAttribute("username");
-           usertype=(String)hs.getAttribute("usertype");
-           mail=(String)hs.getAttribute("mail");
-              }catch(Exception ex){
-                out.println(ex.getMessage());
-            }  
-           
-            %>
             
-            <%
-           
-            String ls=null;
-            
-            try{
-              
-            //validating login status
-           hs=request.getSession(true);
-           ls=(String)hs.getAttribute("loginstatus");
-           if (ls == null){
-              response.sendRedirect("login.html");
-           }else{
-               if (!ls.equals("yes")){
-                   response.sendRedirect("login.html");
-               }
-           }
-              }catch(Exception ex){
-                out.println(ex.getMessage());
-            }  
-           
-            %>    
           
             
    <div class="page-container">
@@ -125,47 +87,24 @@
                                                                                        <th scope="col"> Issued Status </th>
                                                                                     </tr>
                                                                                 </thead>
-                                                                                <%  
-                                                    String a,b,d,g;
-                                                    Date c;
-                                                    try
-                                                        {
-                                                            Dbcon dc=new Dbcon();
-                                                            Class.forName(dc.getDriver());
-                                                            Connection con=DriverManager.getConnection(dc.getUrl(),dc.getUser(),dc.getPassword());
-                                                            PreparedStatement ps=con.prepareStatement("Select * from Indents_tab");
-                                                            ResultSet rs=ps.executeQuery();
-                                                            while(rs.next())
-                                                                {
-                                                                    a=rs.getString(1);
-                                                                    b=rs.getString(2);
-                                                                    d=rs.getString(4);
-                                                                    c=rs.getDate(3);
-                                                                   g=rs.getString(5);
-                                
-            %>
+                                                                               
                                                                                 
                                                                                 <tbody>
-                                                                                        <tr>
-                                                                                            <td><%=a %></td>
-                                                                                            <td><%=b %></td>
-                                                                                            <td><%=c %></td>
-                                                                                             <td><%=d %></td>
-                                                                                             <td><%=g %></td>
-                                                                                        </tr>
+                                                                                        
+                                                                                            <c:forEach items="${StockList.li}" var="user">
+																			<tr>
+  																				<td>${user.Indent_Id}</td>
+ 																				<td>${user.Indents_Item}</td>
+																				<td>${user.Indent_Date}</td>
+																				<td>${user.Indents_Amount}</td>
+ 																				<td>${user.Issued_Status}</td>
+																			</tr>
+                                                                                      </c:forEach>
                                                                                        
                                                                                  </tbody> 
-                                                                                 <%              } %> 
+                                                                               
                                                                             </table>
-                                                                             <%        rs.close();
-                        ps.close();
-                        con.close();
-                    }
-                catch(Exception ex)
-                    {
-                         ex.printStackTrace();
-                    }
-            %>
+                                                                            
 									</div>
                                                                     </div>
                                                             </div>
@@ -190,8 +129,8 @@
 			<!--/down-->
 							<div class="down">	
 									  
-									  <div id="uname"> <span class=" name-caret"><%= username %></span></div>
-									 <p><%= usertype %><br>In <br>Company</p>
+									  <div id="uname"> <span class=" name-caret"></span></div>
+									 <p><br>In <br>Company</p>
 									              <ul>
 									<li><a class="tooltips" href="VendorProfile.jsp"><span>Profile</span><i class="lnr lnr-user"></i></a></li>
 									

@@ -50,26 +50,7 @@
 <!--//skycons-icons-->
 </head> 
 <body>
-    <%
-           
-            
-            HttpSession hs=null;
-            String username=null;
-            String usertype=null;
-            String mail=null;
-            RequestDispatcher rd=null;
-            try{
-              
-            //validating login status
-           hs=request.getSession(true);
-           username=(String)hs.getAttribute("username");
-           usertype=(String)hs.getAttribute("usertype");
-           mail=(String)hs.getAttribute("mail");
-              }catch(Exception ex){
-                out.println(ex.getMessage());
-            }  
-           
-            %>
+
     
 
       
@@ -287,8 +268,8 @@
 			<!--/down-->
 							<div class="down">	
 									  
-									  <div id="uname"> <span class=" name-caret"><%= username %></span></div>
-									 <p><%= usertype %><br>In <br>Company</p>
+									  <div id="uname"> <span class=" name-caret"></span></div>
+									 <p><br>In <br>Company</p>
 									<ul>
 									<li><a class="tooltips" href="VendorProfile.jsp"><span>Profile</span><i class="lnr lnr-user"></i></a></li>
 									
@@ -302,7 +283,7 @@
 										<li><a href="VendorItemTable.jsp"><i class="fa fa-table"></i> <span>View All Items</span></a></li>
 									 <li><a href="#"><i class="lnr lnr-envelope"></i> <span></span>Indents<span class="fa fa-angle-right" style="float: right"></span></a>
 									   <ul>
-                                                                               <li><a href="VendorViewIndent.jsp"> View All Indents</a></li>
+                                                                               <li><a href="ViewIndent"> View All Indents</a></li>
 										<li><a href="Create_New_Indents.jsp"> Create Indents</a></li>
 									  </ul>
 									</li>
