@@ -92,14 +92,14 @@
 																		<div class="form-group">
 																			<label for="focusedinput" class="col-sm-2 control-label">Item_Id</label>
 																				<div class="col-sm-6">
-																					<input type="text" path="Item_id" class="form-control1" id="a" placeholder="Item_Id">
+																					<form:input type="text" path="Item_id" class="form-control1" id="a" placeholder="Item_Id"/>
                                                                                                                                                                 </div>
                                                                                                                                                                 
 																		</div>
                                                                                                                                                 <div class="form-group">
                                                                                                                                                             <label for="focusedinput" class="col-sm-2 control-label">Item_BatchNo</label>
                                                                                                                                                                     <div class="col-sm-6">
-                                                                                                                                                                            <input type="text"path="Item_BatchNo" class="form-control1" id="b" placeholder="Item_BatchNo" required>
+                                                                                                                                                                            <form:input type="text" path="Item_BatchNo" class="form-control1"  placeholder="Item_BatchNo" />
                                                                                                                                                                     </div>
                                                                                                                                                                     
                                                                                                                                                 </div>
@@ -107,23 +107,23 @@
                                                                                                                                                                 <div class="form-group">
 																			                   <label for="focusedinput" class="col-sm-2 control-label">Item_Sales Price</label>
 																				                  <div class="col-sm-6">
-																					                  <input type="text" path="Item_Saleprice"class="form-control1" id="c" placeholder="Item_Sales Price" required>
+																					                  <form:input type="text" path="Item_Saleprice" class="form-control1"  placeholder="Item_Sales Price" />
                                                                                                                                                                                   </div>
 																		</div>
                                                                                                                                                         <div class="form-group">
 																			           <label for="focusedinput" class="col-sm-2 control-label">Item_Cost Price</label>
 																				          <div class="col-sm-6">
-																					        <input type="text" path="Item_Costprice" class="form-control1" id="d" placeholder="Item_Cost Price" required>
+																					        <form:input type="text" path="Item_Costprice" class="form-control1"  placeholder="Item_Cost Price" />
                                                                                                                                                                          </div>
                                                                                                                                                         </div>
                                                                                                                                                         <div class="form-group">
 																			         <label for="focusedinput" class="col-sm-2 control-label">Item_MRP</label>
                                                                                                                                                                     <div class="col-sm-6">
-																			                 <input type="text" path="Item_MRP" class="form-control1" id="e" placeholder="Item_MRP" required>
+																			                 <form:input type="text" path="Item_MRP" class="form-control1" id="e" placeholder="Item_MRP" />
                                                                                                                                                                     </div>
                                                                                                                                                         </div>         
                                                                                                                                                                             <p class="four">
-																			<input type="button" class="a_demo_four" id="bt" value="SUBMIT"  />
+																			<form:button  class="a_demo_four"  value="SUBMIT">Submit</form:button>
                                                                                                                             </p>
                                                                                                                    
                                                                                                                                          </form:form>
