@@ -1,9 +1,7 @@
-<%@page import="db.Dbcon"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -13,72 +11,29 @@
 
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
  <!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel='stylesheet' type='text/css' />
 <!-- Custom CSS -->
-<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="<c:url value="/resources/css/style.css"/>" rel='stylesheet' type='text/css' />
 <!-- Graph CSS -->
-<link href="css/font-awesome.css" rel="stylesheet"> 
+<link href="<c:url value="/resources/css/font-awesome.css"/>" rel="stylesheet"> 
 <!-- jQuery -->
 <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'>
 <!-- lined-icons -->
-<link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
+<link rel="stylesheet" href="<c:url value="/resources/css/icon-font.min.css"/>" type='text/css' />
 <!-- //lined-icons -->
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="js/amcharts.js"></script>	
-<script src="js/serial.js"></script>	
-<script src="js/light.js"></script>	
-<script src="js/radar.js"></script>	
-<link href="css/barChart.css" rel='stylesheet' type='text/css' />
-<link href="css/fabochart.css" rel='stylesheet' type='text/css' />
-<script src="js/css3clock.js"></script>
-<script src="js/skycons.js"></script>
-<script src="js/jquery.easydropdown.js"></script>
+<script src="<c:url value="/resources/js/jquery-1.10.2.min.js"/>"></script>
+<script src="<c:url value="/resources/js/amcharts.js"/>"></script>	
+<script src="<c:url value="/resources/js/serial.js"/>"></script>	
+<script src="<c:url value="/resources/js/light.js"/>"></script>	
+<script src="<c:url value="/resources/js/radar.js"/>"></script>	
+<link href="<c:url value="/resources/css/barChart.css"/>" rel='stylesheet' type='text/css' />
+<link href="<c:url value="/resources/css/fabochart.css"/>" rel='stylesheet' type='text/css' />
+<script src="<c:url value="/resources/js/css3clock.js"/>"></script>
+<script src="<c:url value="/resources/js/skycons.js"/>"></script>
+<script src="<c:url value="/resources/js/jquery.easydropdown.js"/>"></script>
 </head> 
 <body>
-    <%
-           
-            
-            HttpSession hs=null;
-            String username=null;
-            String usertype=null;
-            String mail=null;
-            RequestDispatcher rd=null;
-            try{
-              
-            //validating login status
-           hs=request.getSession(true);
-           username=(String)hs.getAttribute("username");
-           usertype=(String)hs.getAttribute("usertype");
-           mail=(String)hs.getAttribute("mail");
-              }catch(Exception ex){
-                out.println(ex.getMessage());
-            }  
-           
-            %>
-            
-                <%
-           
-            
-          
-            String ls=null;
-            
-            try{
-              
-            //validating login status
-           hs=request.getSession(true);
-           ls=(String)hs.getAttribute("loginstatus");
-           if (ls == null){
-              response.sendRedirect("login.html");
-           }else{
-               if (!ls.equals("yes")){
-                   response.sendRedirect("login.html");
-               }
-           }
-              }catch(Exception ex){
-                out.println(ex.getMessage());
-            }  
-           
-            %>
+
             
    <div class="page-container">
    <!--/content-inner-->
@@ -127,47 +82,26 @@
                                                                                         <th scope="col">Brand_Title</th>
                                                                                         <th scope="col">Brand_Category</th>
                                                                                         <th scope="col">Brand_Description</th>
-                                                                                                                                                                                
+                                                                                         <th scope="col">DELETE</th>                                                                                       
                                                                                      </tr>
                                                                                 </thead>
-                                                                                <%  
-                                                    String a,b,c,g;
-                                                    try
-                                                        {
-                                                            Dbcon dc=new Dbcon();
-                                                            Class.forName(dc.getDriver());
-                                                            Connection con=DriverManager.getConnection(dc.getUrl(),dc.getUser(),dc.getPassword());
-                                                            PreparedStatement ps=con.prepareStatement("Select * from Brand");
-                                                            ResultSet rs=ps.executeQuery();
-                                                            while(rs.next())
-                                                                {
-                                                                    a=rs.getString(1);
-                                                                    b=rs.getString(2);
-                                                                    c=rs.getString(3);
-                                                                    g=rs.getString(4);
-                                
-            %>
+                                                                               
                                                                                 
                                                                                 <tbody>
-                                                                                        <tr>
-                                                                                            <td><%=a %></td>
-                                                                                            <td><%=b %></td>
-                                                                                            <td><%=c %></td>
-                                                                                            <td><%=g %></td>
-                                                                                        </tr>
+							<c:forEach items="${brandlist.li}" var="user" varStatus="status">
+										<tr>
+											<td>${user.brnd_id}</td>
+											<td>${user.brnd_title}</td>
+											<td>${user.brnd_catg}</td>
+											<td>${user.brnd_desc}</td>
+											<td><button onclick="location.href='deletebrand/${user.brnd_id}'">Delete</button></td>
+										</tr>
+							</c:forEach>
                                                                                        
                                                                                  </tbody> 
-                                                                                 <%              } %> 
+                                                                                
                                                                             </table>
-                                                                             <%        rs.close();
-                        ps.close();
-                        con.close();
-                    }
-                catch(Exception ex)
-                    {
-                         ex.printStackTrace();
-                    }
-            %>
+                                                                            
 									</div>
                                                                     </div>
                                                                 </div>
@@ -345,39 +279,40 @@
 														<h3 class="inner-tittle two">New Form</h3>
 															<div class="grid-1">
 																<div class="form-body">
-																	<form class="form-horizontal">
+																	
+																	 <form:form class="form-horizontal" id="brandform" modelAttribute="iteam" action="addbrand" method="post">
 																		<div class="form-group">
 																			<label for="focusedinput" class="col-sm-2 control-label">Brand_Id</label>
 																				<div class="col-sm-6">
-																					<input type="text" class="form-control1" id="Brand_Id" placeholder="Brand_Id">
+																					<form:input  type="text" class="form-control1" path="brnd_id" id="brnd_id" name="brnd_id" placeholder="Brand_Id"/>
                                                                                                                                                                 </div>
                                                                                                                                                                 
 																		</div>
-                                                                                                                                                <div class="form-group">
-                                                                                                                                                            <label for="focusedinput" class="col-sm-2 control-label">Brand_Title</label>
-                                                                                                                                                                    <div class="col-sm-6">
-                                                                                                                                                                            <input type="text" class="form-control1" id="Brand_Title" placeholder="Brand_Title">
-                                                                                                                                                                    </div>
+                                                                         <div class="form-group">
+                                                                         <label for="focusedinput" class="col-sm-2 control-label">Brand_Title</label>
+                                                                         <div class="col-sm-6">
+                                                                        <form:input type="text" class="form-control1" path="brnd_title" id="brnd_title" placeholder="Brand_Title"/>
+                                                                        </div>
                                                                                                                                                                     
-                                                                                                                                                </div>
-                                                                                                                                                <div class="form-group">
+                                                                          </div>
+                                                                          <div class="form-group">
 																			<label for="focusedinput" class="col-sm-2 control-label">Brand_Category</label>
 																				<div class="col-sm-6">
-																					<input type="text" class="form-control1" id="Brand_Category" placeholder="Brand_Category">
+																					<form:input type="text" class="form-control1" path="brnd_catg" id="brand_catg" placeholder="Brand_Category"/>
                                                                                                                                                                 </div>
                                                                                                                                                 </div>
                                                                                                                                                            <div class="form-group">
 																			<label for="focusedinput" class="col-sm-2 control-label">Brand_Description</label>
 																				<div class="col-sm-6">
-																					<input type="text" class="form-control1" id="Brand_Description" placeholder="Brand_Description">
+																					<form:input type="text" class="form-control1" path="brnd_desc" id="brnd_desc" placeholder="Brand_Description"/>
                                                                                                                                                                 </div>
-                                                                                                                                                </div>  
-                                                                                                                                                                <p class="four">
-																			<a class="a_demo_four" onclick="add1()">
-																				ADD
-																			</a>
-															</p>
-                                                                                                                                         </form>
+                                                                                                                                                </div> 
+                                                                                          
+																					 <p class="four">
+																			
+																				<input  type="submit"  value="SUBMIT">
+																		
+															</p>   </form:form>
 																</div>
 															</div>
 													</div>
@@ -440,8 +375,8 @@
 			<!--/down-->
 							<div class="down">	
 									  
-									  <div id="uname"> <span class=" name-caret"><%= username %></span></div>
-									 <p><%= usertype %><br>In <br>Company</p>
+									  <div id="uname"> <span class=" name-caret"></span></div>
+									 <p><br>In <br>Company</p>
 									<ul>
 									<li><a class="tooltips" href="Profile.jsp"><span>Profile</span><i class="lnr lnr-user"></i></a></li>
 									
@@ -562,14 +497,14 @@
                     
                          </script> 
 <!--js -->
-<link rel="stylesheet" href="css/vroom.css">
-<script type="text/javascript" src="js/vroom.js"></script>
-<script type="text/javascript" src="js/TweenLite.min.js"></script>
-<script type="text/javascript" src="js/CSSPlugin.min.js"></script>
-<script src="js/jquery.nicescroll.js"></script>
-<script src="js/scripts.js"></script>
+<link rel="stylesheet" href="<c:url value="/resources/css/vroom.css"/>" />
+<script type="text/javascript" src="<c:url value="/resources/js/vroom.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/TweenLite.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/CSSPlugin.min.js"/>"></script>
+<script src="<c:url value="/resources/js/jquery.nicescroll.js"/>"></script>
+<script src="<c:url value="/resources/js/scripts.js"/>"></script>
 
 <!-- Bootstrap Core JavaScript -->
-   <script src="js/bootstrap.min.js"></script>
+   <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 </body>
 </html>

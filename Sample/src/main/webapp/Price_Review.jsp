@@ -1,4 +1,8 @@
-     
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.sql.*" %> 
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE HTML>
 <html>
@@ -8,71 +12,36 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+
+
+
+
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
  <!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel='stylesheet' type='text/css' />
 <!-- Custom CSS -->
-<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="<c:url value="/resources/css/style.css"/>" rel='stylesheet' type='text/css' />
 <!-- Graph CSS -->
-<link href="css/font-awesome.css" rel="stylesheet"> 
+<link href="<c:url value="/resources/css/font-awesome.css"/>" rel="stylesheet"> 
 <!-- jQuery -->
 <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'>
 <!-- lined-icons -->
-<link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
+<link rel="stylesheet" href="<c:url value="/resources/css/icon-font.min.css"/>" type='text/css' />
 <!-- //lined-icons -->
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="js/amcharts.js"></script>	
-<script src="js/serial.js"></script>	
-<script src="js/light.js"></script>	
-<script src="js/radar.js"></script>	
-<link href="css/barChart.css" rel='stylesheet' type='text/css' />
-<link href="css/fabochart.css" rel='stylesheet' type='text/css' />
-<script src="js/css3clock.js"></script>
-<script src="js/skycons.js"></script>
-<script src="js/jquery.easydropdown.js"></script>
+<script src="<c:url value="/resources/js/jquery-1.10.2.min.js"/>"></script>
+<script src="<c:url value="/resources/js/amcharts.js"/>"></script>	
+<script src="<c:url value="/resources/js/serial.js"/>"></script>	
+<script src="<c:url value="/resources/js/light.js"/>"></script>	
+<script src="<c:url value="/resources/js/radar.js"/>"></script>	
+<link href="<c:url value="/resources/css/barChart.css"/>" rel='stylesheet' type='text/css' />
+<link href="<c:url value="/resources/css/fabochart.css"/>" rel='stylesheet' type='text/css' />
+<script src="<c:url value="/resources/js/css3clock.js"/>"></script>
+<script src="<c:url value="/resources/js/skycons.js"/>"></script>
+<script src="<c:url value="/resources/js/jquery.easydropdown.js"/>"></script>
 </head> 
 <body>
-    <%
-           
-            
-            HttpSession hs=null;
-            String username=null;
-            String usertype=null;
-            String mail=null;
-            RequestDispatcher rd=null;
-            try{
-              
-            //validating login status
-           hs=request.getSession(true);
-           username=(String)hs.getAttribute("username");
-           usertype=(String)hs.getAttribute("usertype");
-           mail=(String)hs.getAttribute("mail");
-              }catch(Exception ex){
-                out.println(ex.getMessage());
-            }  
-           
-            %>
-              
-              <%
-           
-            String ls=null;
-            
-            try{
-              
-            //validating login status
-           hs=request.getSession(true);
-           ls=(String)hs.getAttribute("loginstatus");
-           if (ls == null){
-              response.sendRedirect("login.html");
-           }else{
-               if (!ls.equals("yes")){
-                   response.sendRedirect("login.html");
-               }
-           }
-              }catch(Exception ex){
-                out.println(ex.getMessage());
-            }  
-           
-            %>
+  
             
    <div class="page-container">
    <!--/content-inner-->
@@ -119,18 +88,18 @@
 														<h3 class="inner-tittle two">Price Review</h3>
 															<div class="grid-1">
 																<div class="form-body">
-																	<form class="form-horizontal">
+																	<form:form class="form-horizontal" id="regForm" modelAttribute="price" action="priceprocess" method="post">
 																		<div class="form-group">
 																			<label for="focusedinput" class="col-sm-2 control-label">Item_Id</label>
 																				<div class="col-sm-6">
-																					<input type="text" class="form-control1" id="a" placeholder="Item_Id">
+																					<input type="text" path="Item_id" class="form-control1" id="a" placeholder="Item_Id">
                                                                                                                                                                 </div>
                                                                                                                                                                 
 																		</div>
                                                                                                                                                 <div class="form-group">
                                                                                                                                                             <label for="focusedinput" class="col-sm-2 control-label">Item_BatchNo</label>
                                                                                                                                                                     <div class="col-sm-6">
-                                                                                                                                                                            <input type="text" class="form-control1" id="b" placeholder="Item_BatchNo" required>
+                                                                                                                                                                            <input type="text"path="Item_BatchNo" class="form-control1" id="b" placeholder="Item_BatchNo" required>
                                                                                                                                                                     </div>
                                                                                                                                                                     
                                                                                                                                                 </div>
@@ -138,26 +107,26 @@
                                                                                                                                                                 <div class="form-group">
 																			                   <label for="focusedinput" class="col-sm-2 control-label">Item_Sales Price</label>
 																				                  <div class="col-sm-6">
-																					                  <input type="text" class="form-control1" id="c" placeholder="Item_Sales Price" required>
+																					                  <input type="text" path="Item_Saleprice"class="form-control1" id="c" placeholder="Item_Sales Price" required>
                                                                                                                                                                                   </div>
 																		</div>
                                                                                                                                                         <div class="form-group">
 																			           <label for="focusedinput" class="col-sm-2 control-label">Item_Cost Price</label>
 																				          <div class="col-sm-6">
-																					        <input type="text" class="form-control1" id="d" placeholder="Item_Cost Price" required>
+																					        <input type="text" path="Item_Costprice" class="form-control1" id="d" placeholder="Item_Cost Price" required>
                                                                                                                                                                          </div>
                                                                                                                                                         </div>
                                                                                                                                                         <div class="form-group">
 																			         <label for="focusedinput" class="col-sm-2 control-label">Item_MRP</label>
                                                                                                                                                                     <div class="col-sm-6">
-																			                 <input type="text" class="form-control1" id="e" placeholder="Item_MRP" required>
+																			                 <input type="text" path="Item_MRP" class="form-control1" id="e" placeholder="Item_MRP" required>
                                                                                                                                                                     </div>
                                                                                                                                                         </div>         
                                                                                                                                                                             <p class="four">
-																			<input type="button" class="a_demo_four" id="bt" value="SUBMIT" onclick="call()" />
+																			<input type="button" class="a_demo_four" id="bt" value="SUBMIT"  />
                                                                                                                             </p>
                                                                                                                    
-                                                                                                                                         </form>
+                                                                                                                                         </form:form>
 																</div>
 															</div>
 													</div>
@@ -189,8 +158,8 @@
 			<!--/down-->
 							<div class="down">	
 									  
-									  <div id="uname"> <span class=" name-caret"><%= username %></span></div>
-									 <p><%= usertype %><br>In <br>Company</p>
+									  <div id="uname"> <span class=" name-caret"></span></div>
+									 <p><br>In <br>Company</p>
 									    <ul>
 									<li><a class="tooltips" href="Profile.jsp"><span>Profile</span><i class="lnr lnr-user"></i></a></li>
 									
@@ -272,7 +241,7 @@
                                                                  
                                                             }
 							</script>
-                            <script>
+                          <!--  <script>
                                 function call()
                                             { 
                                                 //alert("sad");
@@ -323,16 +292,16 @@
                         }
                     
                     
-                         </script> 
+                         </script> -->
 <!--js -->
-<link rel="stylesheet" href="css/vroom.css">
-<script type="text/javascript" src="js/vroom.js"></script>
-<script type="text/javascript" src="js/TweenLite.min.js"></script>
-<script type="text/javascript" src="js/CSSPlugin.min.js"></script>
-<script src="js/jquery.nicescroll.js"></script>
-<script src="js/scripts.js"></script>
+<link  href="<c:url value="/resources/css/vroom.css"/>" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="<c:url value="/resources/js/vroom.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/TweenLite.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/CSSPlugin.min.js"/>"></script>
+<script src="<c:url value="/resources/js/jquery.nicescroll.js"/>"></script>
+<script src="<c:url value="/resources/js/scripts.js"/>"></script>
 
 <!-- Bootstrap Core JavaScript -->
-   <script src="js/bootstrap.min.js"></script>
+   <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 </body>
 </html>

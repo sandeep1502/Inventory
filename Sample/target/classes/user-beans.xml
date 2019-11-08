@@ -33,5 +33,18 @@
     <bean id="IndentDao" class="com.project.IndentDaoImpl" >
     	<property name="template" ref="jdbcTemplate" />
     </bean>
-	
+	<bean class="com.project.DaoImpl" id="Dao">
+
+<property name="template" ref="jdbcTemplate"/>
+
+</bean>
+<bean id="liveStockDao" class="com.project.LiveStockDaoImpl" >
+    	<property name="template" ref="jdbcTemplate" />
+    </bean>
+	 <bean id="viewDAO" class="com.project.ViewDAOImpl" >
+    	<property name="template" ref="jdbcTemplate" />
+    </bean> 
+     <bean id="priceDAO" class="com.project.PriceDAOImpl" >
+    <property name="template" ref="jdbcTemplate" />
+    </bean>
 </beans>

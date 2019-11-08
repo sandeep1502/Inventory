@@ -1,6 +1,6 @@
-     
-<%@page import="db.Dbcon"%>
-<%@ page import="java.sql.*" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -10,70 +10,29 @@
 
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
  <!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel='stylesheet' type='text/css' />
 <!-- Custom CSS -->
-<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="<c:url value="/resources/css/style.css"/>" rel='stylesheet' type='text/css' />
 <!-- Graph CSS -->
-<link href="css/font-awesome.css" rel="stylesheet"> 
+<link href="<c:url value="/resources/css/font-awesome.css"/>" rel="stylesheet"> 
 <!-- jQuery -->
 <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'>
 <!-- lined-icons -->
-<link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
+<link rel="stylesheet" href="<c:url value="/resources/css/icon-font.min.css"/>" type='text/css' />
 <!-- //lined-icons -->
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="js/amcharts.js"></script>	
-<script src="js/serial.js"></script>	
-<script src="js/light.js"></script>	
-<script src="js/radar.js"></script>	
-<link href="css/barChart.css" rel='stylesheet' type='text/css' />
-<link href="css/fabochart.css" rel='stylesheet' type='text/css' />
-<script src="js/css3clock.js"></script>
-<script src="js/skycons.js"></script>
-<script src="js/jquery.easydropdown.js"></script>
+<script src="<c:url value="/resources/js/jquery-1.10.2.min.js"/>"></script>
+<script src="<c:url value="/resources/js/amcharts.js"/>"></script>	
+<script src="<c:url value="/resources/js/serial.js"/>"></script>	
+<script src="<c:url value="/resources/js/light.js"/>"></script>	
+<script src="<c:url value="/resources/js/radar.js"/>"></script>	
+<link href="<c:url value="/resources/css/barChart.css"/>" rel='stylesheet' type='text/css' />
+<link href="<c:url value="/resources/css/fabochart.css"/>" rel='stylesheet' type='text/css' />
+<script src="<c:url value="/resources/js/css3clock.js"/>"></script>
+<script src="<c:url value="/resources/js/skycons.js"/>"></script>
+<script src="<c:url value="/resources/js/jquery.easydropdown.js"/>"></script>
 </head> 
 <body>
-    <%
-           
-            
-            HttpSession hs=null;
-            String username=null;
-            String usertype=null;
-            String mail=null;
-            RequestDispatcher rd=null;
-            try{
-              
-            //validating login status
-           hs=request.getSession(true);
-           username=(String)hs.getAttribute("username");
-           usertype=(String)hs.getAttribute("usertype");
-           mail=(String)hs.getAttribute("mail");
-              }catch(Exception ex){
-                out.println(ex.getMessage());
-            }  
-           
-            %>
-              
-              <%
-           
-            String ls=null;
-            
-            try{
-              
-            //validating login status
-           hs=request.getSession(true);
-           ls=(String)hs.getAttribute("loginstatus");
-           if (ls == null){
-              response.sendRedirect("login.html");
-           }else{
-               if (!ls.equals("yes")){
-                   response.sendRedirect("login.html");
-               }
-           }
-              }catch(Exception ex){
-                out.println(ex.getMessage());
-            }  
-           
-            %>
+   
             
    <div class="page-container">
    <!--/content-inner-->
@@ -127,52 +86,26 @@
                                                                                           <th scope="col">Outlet_mail</th>
                                                                                      </tr>
                                                                                 </thead>
-                                                                                <%  
-                                                    String a,b,c,d,e,f,g;
-                                                    try
-                                                        {
-                                                           Dbcon dc=new Dbcon();
-                                                     Class.forName(dc.getDriver());
-                                                     Connection con=DriverManager.getConnection(dc.getUrl(),dc.getUser(),dc.getPassword());
-                                                            PreparedStatement ps=con.prepareStatement("Select * from Outlets");
-                                                            ResultSet rs=ps.executeQuery();
-                                                            while(rs.next())
-                                                                {
-                                                                    a=rs.getString(1);
-                                                                    b=rs.getString(2);
-                                                                    c=rs.getString(3);
-                                                                    d=rs.getString(4);
-                                                                    e=rs.getString(5);
-                                                                    f=rs.getString(6);
-                                                                    g=rs.getString(7);
-                                
-            %>
+                                                                               
                                                                                 
                                                                                 <tbody>
-                                                                                        <tr>
-                                                                                            <td><%=a %></td>
-                                                                                            <td><%=b %></td>
-                                                                                            <td><%=c %></td>
-                                                                                             <td><%=d %></td>
-                                                                                            <td><%=e%></td>
-                                                                                            <td><%=f%></td>
-                                                                                             <td><%=g %></td>
-                                                                                            
-                                                                                        
-                                                                                        </tr>
+                                                                                      <c:forEach items="${outletlist.li}" var="user" varStatus="status">
+		<tr>
+			<td>${user.outl_id}</td>
+				<td>${user.outl_location}</td>
+					<td>${user.outl_address}</td>
+				<td>${user.outl_cperson}</td>
+				<td>${user.outl_cmobile}</td>
+					<td>${user.outl_phone}</td>
+				<td>${user.outl_email}</td>
+					</tr>
+						</c:forEach>
+						
                                                                                        
                                                                                  </tbody> 
-                                                                                 <%              } %> 
+                                                                             
                                                                             </table>
-                                                                             <%        rs.close();
-                        ps.close();
-                        con.close();
-                    }
-                catch(Exception ex)
-                    {
-                         ex.printStackTrace();
-                    }
-            %>
+                                                                             
 									</div>
                                                                     </div>
                                                                 </div>
@@ -494,8 +427,8 @@
 			<!--/down-->
 							<div class="down">	
 									  
-									 <div id="uname"> <span class=" name-caret"><%= username %></span></div>
-									 <p><%= usertype %><br>In <br>Company</p>
+									 <div id="uname"> <span class=" name-caret"></span></div>
+									 <p><br>In <br>Company</p>
                                                                                 <ul>
 									<li><a class="tooltips" href="Profile.jsp"><span>Profile</span><i class="lnr lnr-user"></i></a></li>
 									
@@ -622,14 +555,14 @@
                     
                          </script> 
 <!--js -->
-<link rel="stylesheet" href="css/vroom.css">
-<script type="text/javascript" src="js/vroom.js"></script>
-<script type="text/javascript" src="js/TweenLite.min.js"></script>
-<script type="text/javascript" src="js/CSSPlugin.min.js"></script>
-<script src="js/jquery.nicescroll.js"></script>
-<script src="js/scripts.js"></script>
+<link rel="stylesheet" href="<c:url value="/resources/css/vroom.css"/>" />
+<script type="text/javascript" src="<c:url value="/resources/js/vroom.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/TweenLite.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/CSSPlugin.min.js"/>"></script>
+<script src="<c:url value="/resources/js/jquery.nicescroll.js"/>"></script>
+<script src="<c:url value="/resources/js/scripts.js"/>"></script>
 
 <!-- Bootstrap Core JavaScript -->
-   <script src="js/bootstrap.min.js"></script>
+   <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
 </body>
 </html>
