@@ -47,4 +47,7 @@
      <bean id="priceDAO" class="com.project.PriceDAOImpl" >
     <property name="template" ref="jdbcTemplate" />
     </bean>
+    <bean id="stockdao" class="com.project.StockDAOImpl" >
+    <property name="template" ref="jdbcTemplate" />
+    </bean>
 </beans>

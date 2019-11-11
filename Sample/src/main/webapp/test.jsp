@@ -7,5 +7,6 @@
 <h1><a href="indent">click me for view all indents </a></h1>
 
 <a href="Pricereview">pricereview</a>
+<a href="Stockadjustment">stockadjustemnt</a>
 </body>
 </html>
